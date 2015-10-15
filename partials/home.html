@@ -2,16 +2,22 @@
 <script>
 function estimationCount() {
     
-	//var total_words = document.calculator.total_words.value.replace(/[^0-9]/g,'');
-    var text = document.calculator.txt.value;
-	var words = text.replace(/[,;.!:—\/]/g, ' ').replace(/[^a-zA-Z\d\s&:]/g, '').match(/\S+/g);
-	var total_words = words.length;
-	console.log(total_words);
+	
+	var total_words = document.calculator.total_words.value.replace(/[^0-9]/g,'');
+	if (total_words>0) {
+			total_count_words = total_words;
+	}
+	else{
+		var text = document.calculator.txt.value;
+		var words = text.replace(/[,;.!:—\/]/g, ' ').replace(/[^a-zA-Z\d\s&:]/g, '').match(/\S+/g);
+	 	total_count_words = words.length;
+	}
+	
 	var choose_font = document.calculator.choose_font.value;
     var choose_size = document.calculator.choose_size.value;
 	var choose_spacing = document.calculator.choose_spacing.value;
     
-    var count = (1/choose_size)*(choose_font*1)*total_words*choose_spacing/450;
+    var count = (1/choose_size)*(choose_font*1)*total_count_words*choose_spacing/450;
 	count = Math.round(count*10)/10; 
 	
     if (totalCount) { 
@@ -29,7 +35,7 @@ function estimationCount() {
 			
 			
 		 	<ol class="breadcrumb">
-                <li><a href="../index.html">Home</a>
+                <li><a href="#/">Home</a>
                 </li>
 				<li>How many pages required for specific words</li>
             </ol>
@@ -39,18 +45,33 @@ function estimationCount() {
 			
 			<form name="calculator">
 			
-			<div class="row">
-			
-				<!--<div class="form-group col-lg-3">
-				  <label for="words">Total words</label>                        
+			 <ul id="myTab" class="nav nav-tabs">
+                <li class="active"><a href="#/#service-one" data-toggle="tab">Service One</a>
+                </li>
+                <li><a href="#/#service-two" data-toggle="tab">Service Two</a>
+                </li>
+				</ul>
+				
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade in active" id="service-one">
+                    
+			<div class="form-group col-lg-3">
+				<label for="words">Total words</label>                        
 				<input name="total_words" value="0" onkeyup="estimationCount();" onkeydown="if (event.keyCode === 13) { return false; }" class="form-control" />
-			</div>-->
+			</div>
 			
+                </div>
+				
+			
+			<div class="tab-pane fade" id="service-two">
+			
+			<div class="row">
 			<div class="form-group col-lg-10">
 			 <label for="words">Start typing, or copy and paste your document here...</label>           				
 			<textarea id="txt" name="txt" rows="12" onkeyup="estimationCount();" style="resize: none; overflow: hidden; word-wrap: break-word; height: 254px;" class="form-control garlic-auto-save processed" placeholder="Start typing, or copy and paste your document here..." data-autosize-on="true"></textarea>
-			
 			</div>
+			</div>
+			
 			</div>
 			
 			
