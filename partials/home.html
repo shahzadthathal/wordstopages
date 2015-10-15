@@ -2,8 +2,12 @@
 <script>
 function estimationCount() {
     
-	var total_words = document.calculator.total_words.value.replace(/[^0-9]/g,'');
-    var choose_font = document.calculator.choose_font.value;
+	//var total_words = document.calculator.total_words.value.replace(/[^0-9]/g,'');
+    var text = document.calculator.txt.value;
+	var words = text.replace(/[,;.!:—\/]/g, ' ').replace(/[^a-zA-Z\d\s&:]/g, '').match(/\S+/g);
+	var total_words = words.length;
+	console.log(total_words);
+	var choose_font = document.calculator.choose_font.value;
     var choose_size = document.calculator.choose_size.value;
 	var choose_spacing = document.calculator.choose_spacing.value;
     
@@ -31,14 +35,26 @@ function estimationCount() {
             </ol>
         
             
-			<div class="row">
+			
 			
 			<form name="calculator">
 			
-				<div class="form-group col-lg-3">
+			<div class="row">
+			
+				<!--<div class="form-group col-lg-3">
 				  <label for="words">Total words</label>                        
 				<input name="total_words" value="0" onkeyup="estimationCount();" onkeydown="if (event.keyCode === 13) { return false; }" class="form-control" />
-				</div>
+			</div>-->
+			
+			<div class="form-group col-lg-10">
+			                     				
+			<textarea id="txt" name="txt" rows="12" onkeyup="estimationCount();" style="resize: none; overflow: hidden; word-wrap: break-word; height: 254px;" class="form-control garlic-auto-save processed" placeholder="Start typing, or copy and paste your document here..." data-autosize-on="true"></textarea>
+			
+			</div>
+			</div>
+			
+			
+			<div class="row">
 			
 			<div class="form-group col-lg-3">
 			<label for="choose_font">Choose Font</label>
@@ -71,10 +87,12 @@ function estimationCount() {
           		<option value="1.644">double</option>
         	</select>
 		  </div>
-		  
+
+		</div>
+				  
 		</form>	
 		
-		</div>
+
 		<div class="row">
 		<div class="col-sm-4">
             <div class="panel panel-primary text-center">
