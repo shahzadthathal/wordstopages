@@ -1,0 +1,216 @@
+
+<script>
+function estimationCount() {
+    
+	var total_words = document.calculator.total_words.value.replace(/[^0-9]/g,'');
+    var choose_font = document.calculator.choose_font.value;
+    var choose_size = document.calculator.choose_size.value;
+	var choose_spacing = document.calculator.choose_spacing.value;
+    
+    var count = (1/choose_size)*(choose_font*1)*total_words*choose_spacing/450;
+	count = Math.round(count*10)/10; 
+	
+    if (totalCount) { 
+	totalCount.innerHTML = '<li class="list-group-item"><span class="label label-info">'+ count + '</span><small> &nbsp;Pages</small></li>'; 
+	}
+}
+</script>
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-12">
+		
+		<h1 class="page-header">Words to Pages </h1>
+			
+			
+		 	<ol class="breadcrumb">
+                <li><a href="../index.html">Home</a>
+                </li>
+				<li>How many pages required for specific words</li>
+            </ol>
+        
+            
+			<div class="row">
+			
+			<form name="calculator">
+			
+				<div class="form-group col-lg-3">
+				  <label for="words">Total words</label>                        
+				<input name="total_words" value="0" onkeyup="estimationCount();" onkeydown="if (event.keyCode === 13) { return false; }" class="form-control" />
+				</div>
+			
+			<div class="form-group col-lg-3">
+			<label for="choose_font">Choose Font</label>
+			<select name="choose_font" onchange="estimationCount();" class="form-control">
+				  <option selected="selected" value="1">Arial</option>
+				  <option value="0.946">Calibri</option>
+				  <option value="1.277">Comic Sans MS</option>
+				  <option value="1.243">Courier</option>
+				  <option value="1.13">Times New Roman</option>
+				  <option value="1.212">Verdana</option>
+			</select>
+			</div>
+			
+			<div class="form-group col-lg-3">
+			<label for="choose_size">Choose Size</label>			
+			<select name="choose_size" onchange="estimationCount();" class="form-control">
+				<option selected="selected" value="1">12</option>
+				<option value="1.522">10</option>
+				<option value="1.206">11</option>
+				<option value="0.859">13</option>
+				<option value="0.789">14</option>
+        	</select>
+			</div>
+			
+			<div class="form-group col-lg-3">
+			<label for="choose_spacing">Choose Spacing</label>			
+			<select name="choose_spacing" onchange="estimationCount();" class="form-control">
+          		<option value="1">single</option>
+          		<option value="1.267">1.5</option>
+          		<option value="1.644">double</option>
+        	</select>
+		  </div>
+		  
+		</form>	
+		
+		</div>
+		<div class="row">
+		<div class="col-sm-4">
+            <div class="panel panel-primary text-center">
+                <div class="panel-heading">
+                    <strong>Resutl</strong>
+                </div>
+                 <ul class="list-group" id="totalCount">
+                    <li class="list-group-item"><span class="label label-info">0</span><small> &nbsp;Pages</small></li>
+                </ul>
+            </div>
+        </div>
+		</div>
+		
+		</div>
+		</div>
+			
+			<div class="row">
+			<div class="col-lg-12">
+			
+            <ol class="breadcrumb">
+              <li>General Calculation</li>
+				<li> on font: arial, font size: 12, single spaced</li>
+            </ol>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-3">
+            <div class="panel panel-primary text-center">
+                <div class="panel-heading">
+                    <strong>How many words?</strong>
+                </div>
+                 <ul class="list-group">
+                    <li class="list-group-item"><span class="label label-info">500</span><small> words</small></li>
+                    <li class="list-group-item"><span class="label label-info">600</span><small> words</small></li>
+                    <li class="list-group-item"><span class="label label-info">750</span><small> words</small></li>
+                    <li class="list-group-item"><span class="label label-info">800</span><small> words</small></li>
+                    <li class="list-group-item"><span class="label label-info">1000</span><small> words</small></li>
+                    <li class="list-group-item"><span class="label label-info">1200</span><small> words</small></li>
+					<li class="list-group-item"><span class="label label-info">1500</span><small> words</small></li>
+                    <li class="list-group-item"><span class="label label-info">2000</span><small> words</small></li>
+                    <li class="list-group-item"><span class="label label-info">2500</span><small> words</small></li>
+                    <li class="list-group-item"><span class="label label-info">3000</span><small> words</small></li>
+                    <li class="list-group-item"><span class="label label-info">4000</span><small> words</small></li>
+                    <li class="list-group-item"><span class="label label-info">5000</span><small> words</small></li>
+					<li class="list-group-item"><span class="label label-info">6000</span><small> words</small></li>
+                    <li class="list-group-item"><span class="label label-info">8000</span><small> words</small></li>
+                    <li class="list-group-item"><span class="label label-info">10000</span><small> words</small></li>
+					
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="panel panel-primary text-center">
+                <div class="panel-heading">
+                    <strong>Pages Count</strong>
+                </div>                
+                <ul class="list-group">
+                    <li class="list-group-item"><span class="label label-success">1.1</span><small> pages</small></li>
+                    <li class="list-group-item"><span class="label label-success">1.3</span><small> pages</small></li>
+                    <li class="list-group-item"><span class="label label-success">1.8</span><small> pages</small></li>
+                    <li class="list-group-item"><span class="label label-success">1.8</span><small> pages</small></li>
+                    <li class="list-group-item"><span class="label label-success">2.2</span><small> pages</small></li>
+                    <li class="list-group-item"><span class="label label-success">2.7</span><small> pages</small></li>
+					<li class="list-group-item"><span class="label label-success">3.3</span><small> pages</small></li>
+                    <li class="list-group-item"><span class="label label-success">4.4</span><small> pages</small></li>
+                    <li class="list-group-item"><span class="label label-success">5.6</span><small> pages</small></li>
+                    <li class="list-group-item"><span class="label label-success">6.7</span><small> pages</small></li>
+                    <li class="list-group-item"><span class="label label-success">8.9</span><small> pages</small></li>
+                    <li class="list-group-item"><span class="label label-success">11.1</span><small> pages</small></li>
+					<li class="list-group-item"><span class="label label-success">13.3</span><small> pages</small></li>
+                    <li class="list-group-item"><span class="label label-success">17.8</span><small> pages</small></li>
+                    <li class="list-group-item"><span class="label label-success">22.2</span><small> pages</small></li>
+
+					
+                </ul>
+            </div>
+        </div>
+      
+	   <div class="col-sm-3">
+            <div class="panel panel-primary text-center">
+                <div class="panel-heading">
+                    <strong>How many pages?</strong>
+                </div>                
+                <ul class="list-group">
+                    <li class="list-group-item"><span class="label label-info">1</span><small> page</small></li>
+                    <li class="list-group-item"><span class="label label-info">2</span><small> pages</small></li>
+                    <li class="list-group-item"><span class="label label-info">3</span><small> pages</small></li>
+                    <li class="list-group-item"><span class="label label-info">4</span><small> pages</small></li>
+                    <li class="list-group-item"><span class="label label-info">5</span><small> pages</small></li>
+                    <li class="list-group-item"><span class="label label-info">6</span><small> pages</small></li>
+					<li class="list-group-item"><span class="label label-info">7</span><small> pages</small></li>
+                    <li class="list-group-item"><span class="label label-info">8</span><small> pages</small></li>
+                    <li class="list-group-item"><span class="label label-info">10</span><small> pages</small></li>
+                    <li class="list-group-item"><span class="label label-info">12</span><small> pages</small></li>
+                    <li class="list-group-item"><span class="label label-info">15</span><small> pages</small></li>
+                    <li class="list-group-item"><span class="label label-info">20</span><small> pages</small></li>
+					<li class="list-group-item"><span class="label label-info">30</span><small> pages</small></li>
+                    <li class="list-group-item"><span class="label label-info">50</span><small> pages</small></li>
+                    <li class="list-group-item"><span class="label label-info">100</span><small> pages</small></li>
+
+					
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="panel panel-primary text-center">
+                <div class="panel-heading">
+                    <strong>Words Count</strong>
+                </div>
+                 <ul class="list-group">
+                    <li class="list-group-item"><span class="label label-success">450</span><small> words</small></li>
+                    <li class="list-group-item"><span class="label label-success">900</span><small> words</small></li>
+					<li class="list-group-item"><span class="label label-success">1350</span><small> words</small></li>
+                    <li class="list-group-item"><span class="label label-success">1800</span><small> words</small></li>
+                    <li class="list-group-item"><span class="label label-success">2250</span><small> words</small></li>
+                    <li class="list-group-item"><span class="label label-success">2700</span><small> words</small></li>
+                    <li class="list-group-item"><span class="label label-success">3150</span> <small>&nbsp; words</small></li>
+					<li class="list-group-item"><span class="label label-success">3600</span> <small>  &nbsp; words</small></li>
+                    <li class="list-group-item"><span class="label label-success">4500 </span> <small>  &nbsp; words</small></li>
+                    <li class="list-group-item"><span class="label label-success">5400 </span> <small>  &nbsp; words</small></li>
+                    <li class="list-group-item"><span class="label label-success">6750 </span> <small>  &nbsp; words</small></li>
+                    <li class="list-group-item"><span class="label label-success">9000 </span> <small>  &nbsp; words</small></li>
+                    <li class="list-group-item"><span class="label label-success">13500 </span> <small>  &nbsp; words</small></li>
+					<li class="list-group-item"><span class="label label-success">22500 </span> <small>  &nbsp; words</small></li>
+                    <li class="list-group-item"><span class="label label-success">45000 </span> <small>  &nbsp; words</small></li>
+ 					 
+                </ul>
+            </div>
+        </div>
+      
+
+    </div>
+
+</div>
+<!-- /.container -->
+
