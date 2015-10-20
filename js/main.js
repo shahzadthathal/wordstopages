@@ -9,6 +9,8 @@ var app = angular.module('webApp', [
  * Configure the Routes
  */
 app.config(['$routeProvider', function ($routeProvider) {
+  
+  
   $routeProvider
      .when("/", {templateUrl: "partials/home.html", controller: "PageCtrl"})
     // Pages
@@ -16,6 +18,8 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/contact", {templateUrl: "partials/contact.html", controller: "PageCtrl"})
     // else 404
     .otherwise("/404", {templateUrl: "partials/404.html", controller: "PageCtrl"});
+	
+	
 }]);
 
 /**
