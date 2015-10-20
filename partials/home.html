@@ -42,6 +42,7 @@ function estimationCount() {
         
             
 			
+			<form name="calculator">
 			
 			 <ul id="myTab" class="nav nav-tabs">
                 <li class="active"><a href="#/#service-one" data-toggle="tab">Service One</a>
@@ -53,7 +54,7 @@ function estimationCount() {
             <div id="myTabContent" class="tab-content">
                 <div class="tab-pane fade in active" id="service-one">
              
-			 <form name="calculator">       
+			        
 			<div class="form-group col-lg-3">
 				<label for="words">Total words</label>                        
 				<input name="total_words" value="0" onkeyup="estimationCount();" onkeydown="if (event.keyCode === 13) { return false; }" class="form-control" />
@@ -108,11 +109,12 @@ function estimationCount() {
         	</select>
 		  </div>
 
-		</form>
+		
 	
 		</div>
+				
 				  
-			
+		</form>	
 		
 
 		<div class="row">
