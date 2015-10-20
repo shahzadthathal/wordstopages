@@ -53,6 +53,9 @@ body {
     border: 1px solid #cccccc;
 }
 
+.list-group-item span{margin-left:130px;}
+
+
 /* Half Page Height Carousel Customization */
 .carousel {
     height: 50%;
