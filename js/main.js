@@ -39,7 +39,7 @@ app.directive('showtab',
 					$(".table").children().children().removeClass("search-found");
 					$("#total_words").val('');
 					$("#txt").val('');
-					$("#totalCount").empty().append(0);
+					$("#totalCount").empty().append("Pages: [0]");
                     $(element).tab('show');
                 });
             }
