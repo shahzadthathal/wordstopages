@@ -24,7 +24,7 @@ function estimationCount() {
     var count = (1/choose_size)*(choose_font*1)*total_count_words*choose_spacing/450;
 	count = Math.round(count*10)/10; 
 	 
-	 $('#totalCount').empty().append(count);
+	 $('#totalCount').empty().append("Pages: ["+count+"]");
 	
 	//if ($.inArray(total_count_words, defaultArr) > -1){ 
 		
@@ -50,25 +50,19 @@ function estimationCount() {
     <div class="row">
     <div class="col-lg-12">
 		
-			<div class="top-margin">
-		 	<ol class="breadcrumb">
-                <li><a href="#/">Home</a>
-                </li>
-				<li>How many pages required for specific words</li>
-            </ol>
-        	</div>
+			<div class="top-margin"></div>
 			
 			<form name="calculator">
 		
 			 <ul id="myTab" class="nav nav-tabs">
-                <li class="active"><a showtab="" href="#service-one">Service One</a>
+                <li class="active"><a showtab="" href="#enter-total-number-of-words">Enter Total Number of Words</a>
                 </li>
-                <li><a showtab="" href="#service-two" >Service Two</a>
+                <li><a showtab="" href="#type-in-your-words" >Type in your Words</a>
                 </li>
 				</ul>
 				
             <div id="myTabContent" class="tab-content">
-                <div class="tab-pane fade in active" id="service-one">
+                <div class="tab-pane fade in active" id="enter-total-number-of-words">
              
 			        
 			<div class="form-group col-lg-4">
@@ -80,7 +74,7 @@ function estimationCount() {
 			</div>
 			
             </div>
-			    <div class="tab-pane fade" id="service-two">
+			    <div class="tab-pane fade" id="type-in-your-words">
 			
 			<div class="row">
 			<div class="form-group col-lg-12">
@@ -134,40 +128,24 @@ function estimationCount() {
 				  
 		</form>	
 		
+	</div>
+	</div>
+	
+	
+	<div class="section-colored text-center ng-scope">
+    <div class="container">
 
-			<!--<div class="row">
-		<div class="col-sm-4">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <strong>Results!</strong>
-                </div>
-                 <ul class="list-group" id="totalCount">
-                    <li class="list-group-item"><span class="label label-success">0</span><small> &nbsp;Pages</small></li>
-                </ul>
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 id="totalCount">Pages: [0]</h1>
+                
             </div>
         </div>
-		</div>-->
-		
-	</div>
-	</div>
-	
-	
-			
-	<div class="row">
-			<div class="col-lg-12">
-			
-            <ol class="breadcrumb">
-              <li><span class="label label-warning">General Calculation on</span></li>
-				<li> <span class="label label-info">font: arial</span> 
-					<span class="label label-info">font size: 12</span>
-					<span class="label label-info">single spaced</span>
-					<span id="totalCount" class="label label-success">0</span><small> &nbsp;Pages</small>
-				</li>
-            </ol>
-        </div>
+        <!-- /.row -->
 
     </div>
-
+	</div>
+	<hr>	
     
 	<div class="row" id="all_text">
 
