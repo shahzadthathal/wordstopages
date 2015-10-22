@@ -24,16 +24,14 @@ function estimationCount() {
     var count = (1/choose_size)*(choose_font*1)*total_count_words*choose_spacing/450;
 	count = Math.round(count*10)/10; 
 	 
-	totalCount.innerHTML = '<li class="list-group-item"><span class="label label-success">'+ count + '</span><small> &nbsp;Pages</small></li>';
+	 $('#totalCount').empty().append(count);
 	
 	//if ($.inArray(total_count_words, defaultArr) > -1){ 
-		$("#totalWords").empty().append(total_count_words+' find in array');
+		
 		$(".table").children().children().removeClass("search-found");
 		$("."+total_count_words).addClass('search-found');
 	//}
 	/*else{
-	
-		$("#totalWords").empty().append(total_count_words+' not find in array');
 	
 		$(".table").children().children().removeClass("search-found");
 		var newEstimate1 = parseInt(total_count_words)+50;
@@ -52,15 +50,13 @@ function estimationCount() {
     <div class="row">
     <div class="col-lg-12">
 		
-		<h1 class="page-header">Words to Pages </h1>
-			
-			
+			<div class="top-margin">
 		 	<ol class="breadcrumb">
                 <li><a href="#/">Home</a>
                 </li>
 				<li>How many pages required for specific words</li>
             </ol>
-        
+        	</div>
 			
 			<form name="calculator">
 		
@@ -139,7 +135,7 @@ function estimationCount() {
 		</form>	
 		
 
-			<div class="row">
+			<!--<div class="row">
 		<div class="col-sm-4">
             <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -150,7 +146,7 @@ function estimationCount() {
                 </ul>
             </div>
         </div>
-		</div>
+		</div>-->
 		
 	</div>
 	</div>
@@ -165,6 +161,7 @@ function estimationCount() {
 				<li> <span class="label label-info">font: arial</span> 
 					<span class="label label-info">font size: 12</span>
 					<span class="label label-info">single spaced</span>
+					<span id="totalCount" class="label label-success">0</span><small> &nbsp;Pages</small>
 				</li>
             </ol>
         </div>
