@@ -36,6 +36,10 @@ app.directive('showtab',
             link: function (scope, element, attrs) {
                 element.click(function(e) {
                     e.preventDefault();
+					$(".table").children().children().removeClass("search-found");
+					$("#total_words").val('');
+					$("#txt").val('');
+					$("#totalCount").empty().append(0);
                     $(element).tab('show');
                 });
             }
