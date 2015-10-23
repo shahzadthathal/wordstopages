@@ -36,7 +36,7 @@ app.directive('showtab',
             link: function (scope, element, attrs) {
                 element.click(function(e) {
                     e.preventDefault();
-					$(".table").children().children().removeClass("search-found");
+					$(".table").children().children().removeClass("alert-info");
 					$("#total_words").val('');
 					$("#txt").val('');
 					$("#totalCount").empty().append("Pages: 0");
