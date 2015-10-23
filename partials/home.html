@@ -1,379 +1,447 @@
 <script>
 
-var defaultArr = [450, 500, 600, 750, 800, 1000, 1200, 1350, 1500, 1800, 2000, 2250, 2500, 2700, 300, 3150, 3600, 4000, 4500, 5000, 5400, 6000, 6750, 8000, 9000, 10000, 13500, 22500, 45000];
+    var defaultArr = [450, 500, 600, 750, 800, 1000, 1200, 1350, 1500, 1800, 2000, 2250, 2500, 2700, 300, 3150, 3600, 4000, 4500, 5000, 5400, 6000, 6750, 8000, 9000, 10000, 13500, 22500, 45000];
 
-function estimationCount() {
-		
-	var total_words = document.calculator.total_words.value.replace(/[^0-9]/g,'');
-	if (total_words>0) {
-			total_count_words = total_words;
-	}
-	else{
-		var text = document.calculator.txt.value;
-		var words = text.replace(/[,;.!:�\/]/g, ' ').replace(/[^a-zA-Z\d\s&:]/g, '').match(/\S+/g);
-		if( words == null){
-			$("#totalCount").empty().append("Pages: 0");
-			return false;
-		}	
-		total_count_words = words.length;
-	}
-	
-	var choose_font = document.calculator.choose_font.value;
-    var choose_size = document.calculator.choose_size.value;
-	var choose_spacing = document.calculator.choose_spacing.value;
-    
-    var count = (1/choose_size)*(choose_font*1)*total_count_words*choose_spacing/450;
-	count = Math.round(count*10)/10; 
-	 
-	 $('#totalCount').empty().append("Pages: "+count);
-	
-	//if ($.inArray(total_count_words, defaultArr) > -1){ 
-		
-		$(".table").children().children().removeClass("alert-info");
-		$("."+total_count_words).addClass('alert-info');
-	//}
-	/*else{
-	
-		$(".table").children().children().removeClass("search-found");
-		var newEstimate1 = parseInt(total_count_words)+50;
-		var newEstimate2 = parseInt(total_count_words)-50;
-		$(".table").find("."+newEstimate1).addClass('search-found')
-		$(".table").find("."+newEstimate2).addClass('search-found')
-	}	*/
-	
-	
-	
-}
+    function estimationCount() {
+
+        var total_words = document.calculator.total_words.value.replace(/[^0-9]/g,'');
+        if (total_words>0) {
+            total_count_words = total_words;
+        }
+        else{
+            var text = document.calculator.txt.value;
+            var words = text.replace(/[,;.!:�\/]/g, ' ').replace(/[^a-zA-Z\d\s&:]/g, '').match(/\S+/g);
+            if( words == null){
+                $("#totalCount").empty().append("Pages: 0");
+                return false;
+            }
+            total_count_words = words.length;
+        }
+
+        var choose_font = document.calculator.choose_font.value;
+        var choose_size = document.calculator.choose_size.value;
+        var choose_spacing = document.calculator.choose_spacing.value;
+
+        var count = (1/choose_size)*(choose_font*1)*total_count_words*choose_spacing/450;
+        count = Math.round(count*10)/10;
+
+        $('#totalCount').empty().append("Pages: "+count);
+
+        //if ($.inArray(total_count_words, defaultArr) > -1){
+
+        $(".table").children().children().removeClass("alert-info");
+        $("."+total_count_words).addClass('alert-info');
+        //}
+        /*else{
+
+         $(".table").children().children().removeClass("search-found");
+         var newEstimate1 = parseInt(total_count_words)+50;
+         var newEstimate2 = parseInt(total_count_words)-50;
+         $(".table").find("."+newEstimate1).addClass('search-found')
+         $(".table").find("."+newEstimate2).addClass('search-found')
+         }	*/
+
+
+
+    }
 
 </script>
 <div class="container">
 
-    <div class="row">
+<div class="row">
     <div class="col-lg-12">
-		
-			<div class="top-margin"></div>
-			
-			<form name="calculator">
-		
-			 <ul id="myTab" class="nav nav-tabs">
+
+        <div class="top-margin"></div>
+
+        <form name="calculator">
+
+            <ul id="myTab" class="nav nav-tabs">
                 <li class="active"><a showtab="" href="#enter-total-number-of-words">Enter Total Number of Words</a>
                 </li>
                 <li><a showtab="" href="#type-in-your-words" >Type in your Words</a>
                 </li>
-				</ul>
-				
-            <div id="myTabContent" class="tab-content">
-			
-            <div class="tab-pane fade in active" id="enter-total-number-of-words">
-            
-			
-			<div class="form-group col-lg-4">
-			 <label for="total_words">Total words</label>
-		  	<input type="text" class="form-control" id="total_words" name="total_words" aria-describedby="basic-addon1" value="0" onkeyup="estimationCount();" onkeydown="if (event.keyCode === 13) { return false; }">
-			</div>
-			
-            </div>
-			<div class="tab-pane fade" id="type-in-your-words">
-			
-			<div class="row">
-			<div class="form-group col-lg-12">
-			 <label for="txt">Start typing, or copy and paste your document here...</label>
-			<textarea id="txt" name="txt" rows="12" onkeyup="estimationCount();" style="resize: none; overflow: hidden; word-wrap: break-word; height: 254px;" class="form-control garlic-auto-save processed" placeholder="Start typing, or copy and paste your document here..." data-autosize-on="true"></textarea>
-			</div>
-			</div>
-			
-			</div>
-			
-			</div>
-			
-			<div class="row">
-			
-			<div class="form-group col-sm-2">
-			<label for="choose_font">Choose Font</label>
-			<select name="choose_font" id="choose_font" onchange="estimationCount();" class="form-control">
-				  <option selected="selected" value="1">Arial</option>
-				  <option value="0.946">Calibri</option>
-				  <option value="1.277">Comic Sans MS</option>
-				  <option value="1.243">Courier</option>
-				  <option value="1.13">Times New Roman</option>
-				  <option value="1.212">Verdana</option>
-			</select>
-			</div>
-			
-			<div class="form-group col-sm-2">
-			<label for="choose_size">Choose Size</label>			
-			<select name="choose_size" id="choose_size" onchange="estimationCount();" class="form-control">
-				<option value="1.522">10</option>
-				<option value="1.206">11</option>
-				<option selected="selected" value="1">12</option>				
-				<option value="0.859">13</option>
-				<option value="0.789">14</option>
-        	</select>
-			</div>
-			
-			<div class="form-group col-sm-2">
-			<label for="choose_spacing">Choose Spacing</label>			
-			<select name="choose_spacing" id="choose_spacing" onchange="estimationCount();" class="form-control">
-          		<option value="1">single</option>
-          		<option value="1.267">1.5</option>
-          		<option value="1.644">double</option>
-        	</select>
-			
-		  </div>
+            </ul>
 
-		
-	
-		</div>
-				
-				  
-		</form>	
-		
-	</div>
-	</div>
-	
-	
-	<div class="section-colored text-center alert-info">
+            <div id="myTabContent" class="tab-content">
+
+                <div class="tab-pane fade in active" id="enter-total-number-of-words">
+
+
+                    <div class="form-group col-lg-4">
+                        <label for="total_words">Total words</label>
+                        <input type="text" class="form-control" id="total_words" name="total_words" aria-describedby="basic-addon1" value="0" onkeyup="estimationCount();" onkeydown="if (event.keyCode === 13) { return false; }">
+                    </div>
+
+                </div>
+                <div class="tab-pane fade" id="type-in-your-words">
+
+                    <div class="row">
+                        <div class="form-group col-lg-12">
+                            <label for="txt">Start typing, or copy and paste your document here...</label>
+                            <textarea id="txt" name="txt" rows="12" onkeyup="estimationCount();" style="resize: none; overflow: hidden; word-wrap: break-word; height: 254px;" class="form-control garlic-auto-save processed" placeholder="Start typing, or copy and paste your document here..." data-autosize-on="true"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="form-group col-sm-2">
+                    <label for="choose_font">Choose Font</label>
+                    <select name="choose_font" id="choose_font" onchange="estimationCount();" class="form-control">
+                        <option selected="selected" value="1">Arial</option>
+                        <option value="0.946">Calibri</option>
+                        <option value="1.277">Comic Sans MS</option>
+                        <option value="1.243">Courier</option>
+                        <option value="1.13">Times New Roman</option>
+                        <option value="1.212">Verdana</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-sm-2">
+                    <label for="choose_size">Choose Size</label>
+                    <select name="choose_size" id="choose_size" onchange="estimationCount();" class="form-control">
+                        <option value="1.522">10</option>
+                        <option value="1.206">11</option>
+                        <option selected="selected" value="1">12</option>
+                        <option value="0.859">13</option>
+                        <option value="0.789">14</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-sm-2">
+                    <label for="choose_spacing">Choose Spacing</label>
+                    <select name="choose_spacing" id="choose_spacing" onchange="estimationCount();" class="form-control">
+                        <option value="1">single</option>
+                        <option value="1.267">1.5</option>
+                        <option value="1.644">double</option>
+                    </select>
+
+                </div>
+
+
+
+            </div>
+
+
+        </form>
+
+    </div>
+</div>
+
+
+<div class="section-colored text-center alert-info">
     <div class="container">
 
         <div class="row">
             <div class="col-lg-12 ">
                 <h1 id="totalCount">Pages: 0</h1>
-                
+
             </div>
         </div>
         <!-- /.row -->
 
     </div>
-	</div>
-	<hr>	
-    
-	<div class="row" id="all_text">
+</div>
+<hr>
+
+<div class="row" id="all_text">
 
 <div class="col-lg-6">
-<div class="panel panel-primary">
-  <!-- Default panel contents -->
-  <div class="panel-heading"><strong>How many words per page?</strong></div>
-<table class="table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Words</th>
-            <th>Pages</th>
-           
-          </tr>
-        </thead>
-		<tbody>
-          <tr class="500">
-            <th scope="row">1</th>
-            <td><span class="label label-info">500</span></td>
-            <td><span class="label label-success">1.1</span></td>
-            
-          </tr>
-          <tr class="600">
-            <th scope="row">2</th>
-            <td><span class="label label-info">600</span></td>
-            <td><span class="label label-success">1.3</span></td>
-          </tr>
-		  
-		  <tr class="750">
-            <th scope="row">3</th>
-            <td><span class="label label-info">750</span></td>
-            <td><span class="label label-success">1.7</span></td>
-            
-          </tr>
-          <tr class="800">
-            <th scope="row">4</th>
-            <td><span class="label label-info">800</span></td>
-            <td><span class="label label-success">1.8</span></td>
-          </tr>
-		  
-		  <tr class="1000">
-            <th scope="row">5</th>
-            <td><span class="label label-info">1000</span></td>
-            <td><span class="label label-success">2.2</span></td>
-            
-          </tr>
-		  
-          <tr class="1200">
-            <th scope="row">6</th>
-            <td><span class="label label-info">1200</span></td>
-            <td><span class="label label-success">2.7</span></td>
-          </tr>
-		  
-		  <tr class="1500">
-            <th scope="row">7</th>
-            <td><span class="label label-info">1500</span></td>
-            <td><span class="label label-success">3.3</span></td>
-            
-          </tr>
-          <tr class="2000">
-            <th scope="row">8</th>
-            <td><span class="label label-info">2000</span></td>
-            <td><span class="label label-success">4.4</span></td>
-          </tr>
-		  
-		  <tr class="2500">
-            <th scope="row">9</th>
-            <td><span class="label label-info">2500</span></td>
-            <td><span class="label label-success">5.6</span></td>
-            
-          </tr>
-		  
-          <tr class="3000">
-            <th scope="row">10</th>
-            <td><span class="label label-info">3000</span></td>
-            <td><span class="label label-success">6.7</span></td>
-          </tr>
-		  
-		  <tr class="4000">
-            <th scope="row">11</th>
-            <td><span class="label label-info">4000</span></td>
-            <td><span class="label label-success">8.9</span></td>
-            
-          </tr>
-		  
-          <tr class="5000">
-            <th scope="row">12</th>
-            <td><span class="label label-info">5000</span></td>
-            <td><span class="label label-success">11.1</span></td>
-          </tr>
-		  
-		   <tr class="6000">
-            <th scope="row">13</th>
-            <td><span class="label label-info">6000</span></td>
-            <td><span class="label label-success">13.3</span></td>
-          </tr>
-		  
-		  <tr class="8000">
-            <th scope="row">14</th>
-            <td><span class="label label-info">8000</span></td>
-            <td><span class="label label-success">17.8</span></td>
-          </tr>
-		  
-		   <tr class="10000">
-            <th scope="row">15</th>
-            <td><span class="label label-info">10000</span></td>
-            <td><span class="label label-success">22.2</span></td>
-          </tr>
-		  
-        </tbody>
-      </table>
-  </div>
-  </div>
-  
-<div class="col-lg-6">
-<div class="panel panel-primary">
-  <!-- Default panel contents -->
-  <div class="panel-heading"><strong>How many pages per word(s)?</strong></div>
-<table class="table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Pages</th>
-            <th>Words</th>
-           
-          </tr>
-        </thead>
-		<tbody>
-          <tr class="450">
-            <th scope="row">1</th>
-            <td><span class="label label-info">1</span></td>
-            <td><span class="label label-success">450</span></td>
-            
-          </tr>
-          <tr class="900">
-            <th scope="row">2</th>
-            <td><span class="label label-info">2</span></td>
-            <td><span class="label label-success">900</span></td>
-          </tr>
-		  
-		  <tr class="1350">
-            <th scope="row">3</th>
-            <td><span class="label label-info">3</span></td>
-            <td><span class="label label-success">1350</span></td>
-            
-          </tr>
-		  
-          <tr class="1800">
-            <th scope="row">4</th>
-            <td><span class="label label-info">4</span></td>
-            <td><span class="label label-success">1800</span></td>
-          </tr>
-		  
-		  <tr class="2250">
-            <th scope="row">5</th>
-            <td><span class="label label-info">5</span></td>
-            <td><span class="label label-success">2250</span></td>            
-          </tr>
-		  
-          <tr class="2700">
-            <th scope="row">6</th>
-            <td><span class="label label-info">6</span></td>
-            <td><span class="label label-success">2700</span></td>
-          </tr>
-		  
-		  <tr class="3150">
-            <th scope="row">7</th>
-            <td><span class="label label-info">7</span></td>
-            <td><span class="label label-success">3150</span></td>            
-          </tr>
-		  
-          <tr class="3600">
-            <th scope="row">8</th>
-            <td><span class="label label-info">8</span></td>
-            <td><span class="label label-success">3600</span></td>
-          </tr>
-		  
-		  <tr class="4500">
-            <th scope="row">9</th>
-            <td><span class="label label-info">10</span></td>
-            <td><span class="label label-success">4500</span></td>            
-          </tr>
-		  
-          <tr class="5400">
-            <th scope="row">10</th>
-            <td><span class="label label-info">12</span></td>
-            <td><span class="label label-success">5400</span></td>
-          </tr>
-		  
-		  <tr class="6750">
-            <th scope="row">11</th>
-            <td><span class="label label-info">15</span></td>
-            <td><span class="label label-success">6750</span></td>            
-          </tr>
-		  
-          <tr class="9000">
-            <th scope="row">12</th>
-            <td><span class="label label-info">20</span></td>
-            <td><span class="label label-success">9000</span></td>
-          </tr>
-		  
-		   <tr class="13500">
-            <th scope="row">13</th>
-            <td><span class="label label-info">30</span></td>
-            <td><span class="label label-success">13500</span></td>
-          </tr>
-		  
-		  <tr class="22500">
-            <th scope="row">14</th>
-            <td><span class="label label-info">50</span></td>
-            <td><span class="label label-success">22500</span></td>
-          </tr>
-		  
-		   <tr class="45000">
-            <th scope="row">15</th>
-            <td><span class="label label-info">100</span></td>
-            <td><span class="label label-success">45000</span></td>
-          </tr>
-		  
-        </tbody>
-      </table>
-  </div>
-  </div>        
+    <div class="panel panel-primary">
+        <!-- Default panel contents -->
+        <div class="panel-heading"><strong>How many words per page?</strong></div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Words</th>
+                <th>Pages</th>
 
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="500">
+                <th scope="row">1</th>
+                <td><span class="label label-info">500</span></td>
+                <td><span class="label label-success">1.1</span></td>
+
+            </tr>
+            <tr class="600">
+                <th scope="row">2</th>
+                <td><span class="label label-info">600</span></td>
+                <td><span class="label label-success">1.3</span></td>
+            </tr>
+
+            <tr class="750">
+                <th scope="row">3</th>
+                <td><span class="label label-info">750</span></td>
+                <td><span class="label label-success">1.7</span></td>
+
+            </tr>
+            <tr class="800">
+                <th scope="row">4</th>
+                <td><span class="label label-info">800</span></td>
+                <td><span class="label label-success">1.8</span></td>
+            </tr>
+
+            <tr class="1000">
+                <th scope="row">5</th>
+                <td><span class="label label-info">1000</span></td>
+                <td><span class="label label-success">2.2</span></td>
+
+            </tr>
+
+            <tr class="1200">
+                <th scope="row">6</th>
+                <td><span class="label label-info">1200</span></td>
+                <td><span class="label label-success">2.7</span></td>
+            </tr>
+
+            <tr class="1500">
+                <th scope="row">7</th>
+                <td><span class="label label-info">1500</span></td>
+                <td><span class="label label-success">3.3</span></td>
+
+            </tr>
+            <tr class="2000">
+                <th scope="row">8</th>
+                <td><span class="label label-info">2000</span></td>
+                <td><span class="label label-success">4.4</span></td>
+            </tr>
+
+            <tr class="2500">
+                <th scope="row">9</th>
+                <td><span class="label label-info">2500</span></td>
+                <td><span class="label label-success">5.6</span></td>
+
+            </tr>
+
+            <tr class="3000">
+                <th scope="row">10</th>
+                <td><span class="label label-info">3000</span></td>
+                <td><span class="label label-success">6.7</span></td>
+            </tr>
+
+            <tr class="4000">
+                <th scope="row">11</th>
+                <td><span class="label label-info">4000</span></td>
+                <td><span class="label label-success">8.9</span></td>
+
+            </tr>
+
+            <tr class="5000">
+                <th scope="row">12</th>
+                <td><span class="label label-info">5000</span></td>
+                <td><span class="label label-success">11.1</span></td>
+            </tr>
+
+            <tr class="6000">
+                <th scope="row">13</th>
+                <td><span class="label label-info">6000</span></td>
+                <td><span class="label label-success">13.3</span></td>
+            </tr>
+
+            <tr class="8000">
+                <th scope="row">14</th>
+                <td><span class="label label-info">8000</span></td>
+                <td><span class="label label-success">17.8</span></td>
+            </tr>
+
+            <tr class="10000">
+                <th scope="row">15</th>
+                <td><span class="label label-info">10000</span></td>
+                <td><span class="label label-success">22.2</span></td>
+            </tr>
+
+            </tbody>
+        </table>
     </div>
-	
-	
-	
+</div>
+
+<div class="col-lg-6">
+    <div class="panel panel-primary">
+        <!-- Default panel contents -->
+        <div class="panel-heading"><strong>How many pages per word(s)?</strong></div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Pages</th>
+                <th>Words</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="450">
+                <th scope="row">1</th>
+                <td><span class="label label-info">1</span></td>
+                <td><span class="label label-success">450</span></td>
+
+            </tr>
+            <tr class="900">
+                <th scope="row">2</th>
+                <td><span class="label label-info">2</span></td>
+                <td><span class="label label-success">900</span></td>
+            </tr>
+
+            <tr class="1350">
+                <th scope="row">3</th>
+                <td><span class="label label-info">3</span></td>
+                <td><span class="label label-success">1350</span></td>
+
+            </tr>
+
+            <tr class="1800">
+                <th scope="row">4</th>
+                <td><span class="label label-info">4</span></td>
+                <td><span class="label label-success">1800</span></td>
+            </tr>
+
+            <tr class="2250">
+                <th scope="row">5</th>
+                <td><span class="label label-info">5</span></td>
+                <td><span class="label label-success">2250</span></td>
+            </tr>
+
+            <tr class="2700">
+                <th scope="row">6</th>
+                <td><span class="label label-info">6</span></td>
+                <td><span class="label label-success">2700</span></td>
+            </tr>
+
+            <tr class="3150">
+                <th scope="row">7</th>
+                <td><span class="label label-info">7</span></td>
+                <td><span class="label label-success">3150</span></td>
+            </tr>
+
+            <tr class="3600">
+                <th scope="row">8</th>
+                <td><span class="label label-info">8</span></td>
+                <td><span class="label label-success">3600</span></td>
+            </tr>
+
+            <tr class="4500">
+                <th scope="row">9</th>
+                <td><span class="label label-info">10</span></td>
+                <td><span class="label label-success">4500</span></td>
+            </tr>
+
+            <tr class="5400">
+                <th scope="row">10</th>
+                <td><span class="label label-info">12</span></td>
+                <td><span class="label label-success">5400</span></td>
+            </tr>
+
+            <tr class="6750">
+                <th scope="row">11</th>
+                <td><span class="label label-info">15</span></td>
+                <td><span class="label label-success">6750</span></td>
+            </tr>
+
+            <tr class="9000">
+                <th scope="row">12</th>
+                <td><span class="label label-info">20</span></td>
+                <td><span class="label label-success">9000</span></td>
+            </tr>
+
+            <tr class="13500">
+                <th scope="row">13</th>
+                <td><span class="label label-info">30</span></td>
+                <td><span class="label label-success">13500</span></td>
+            </tr>
+
+            <tr class="22500">
+                <th scope="row">14</th>
+                <td><span class="label label-info">50</span></td>
+                <td><span class="label label-success">22500</span></td>
+            </tr>
+
+            <tr class="45000">
+                <th scope="row">15</th>
+                <td><span class="label label-info">100</span></td>
+                <td><span class="label label-success">45000</span></td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="well">
+            <p>There are times when it helps to know how many words per page you're writing. While a general guideline is one page is 500 words (single spaced) or 250 words (double spaced), this is a ballpark figure. The truth is the number of words per page depends on a variety of factors such as the type of font, the font size, spacing elements, margin spacing, and paragraph length to name a few. While it's not possible to take into all these factors when estimating how many words per page there will be for your writing, this calculator can give a more accurate words per page conversion estimate than the typical 250/500 ballpark figure.</p>
+
+            <p>The calculator is able to provide a more accurate conversion by taking into account more specific information. For example, you can choose from a different variety of common fonts to generate an estimate:</p>
+
+            <p>
+                Arial<br />
+                Calibri<br />
+                Comic Sans MS<br />
+                Courier<br />
+                Times New Roman<br />
+                Verdana
+            </p>
+
+            <p>
+                You can then choose your preferred spacing from the following options:
+            </p>
+
+            <p>
+                Single spaced<br />
+                1.5 spaced<br />
+                Double spaced
+            </p>
+
+            <p>
+                Finally, you can choose your preferred font size: 10, 11, 12, 13 or 14.</p>
+
+            <p>By using these three options to more accurately define your writing, the words per page calculator should provide a better estimate on how many words you need to write to fill a page. In the opposite direction, it can give a more accurate estimate of how many pages you have created if you only know the word count.</p>
+
+            <p>While we make every attempt to make our calculators as accurate as possible, the results won't be perfect. This converter addresses some issues to provide a more accurate estimate, but in the end, it's still an estimate. Other issues such as margin space and paragraph length will likely result in some variation from the calculations given. That being said, it should provide a more accurate indication of the number of pages a specific word count will be and the number of words per page you type when compared to the general rule of thumb.</p>
+
+            <p>For general information, the following are calculations using 12-point Arial font, double spaced:</p>
+
+            <p>How many pages is...?</p>
+
+            <p>How many pages is 500 words? 500 words is approximately pages.<br />
+                How many pages is 750 words? 750 words is approximately pages.<br />
+                How many pages is 1,000 words? 1,000 words is approximately pages.<br />
+                How many pages is 1,250 words? 1,250 words is approximately pages.<br />
+                How many pages is 1,500 words? 1,500 words is approximately pages.<br />
+                How many pages is 2,000 words? 2,000 words is approximately pages.<br />
+                How many pages is 2,500 words? 2,500 words is approximately pages.<br />
+                How many pages is 3,000 words? 3,000 words is approximately pages.<br />
+                How many pages is 4,000 words? 4,000 words is approximately pages.<br />
+                How many pages is 5,000 words? 5,000 words is approximately pages.<br />
+                How many pages is 7,500 words? 7,500 words is approximately pages.<br />
+                How many pages is 10,000 words? 10,000 words is approximately pages.
+            </p>
+
+            <p>
+                How many words are in pages?</p>
+
+            <p>How many words are in one page? There are approximately words in one page.<br />
+                How many words are in two pages? There are approximately words in two pages.<br />
+                How many words are in three pages? There are approximately words in three pages.<br />
+                How many words are in four pages? There are approximately words in four pages.<br />
+                How many words are in five pages? There are approximately words in five pages.<br />
+                How many words are in ten pages? There are approximately words in ten pages.<br />
+                How many words are in 15 pages? There are approximately words in 15 pages.<br />
+                How many words are in 25 pages? There are approximately words in 25 pages.<br />
+                How many words are in 50 pages? There are approximately words in 50 pages.<br />
+                How many words are in 100 pages? There are approximately words in 100 pages.</p>
+        </div>
+    </div>
+</div>
+
+
+
 
 </div>
