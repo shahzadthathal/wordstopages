@@ -12,8 +12,10 @@ function estimationCount() {
 	else{
 		var text = document.calculator.txt.value;
 		var words = text.replace(/[,;.!:—\/]/g, ' ').replace(/[^a-zA-Z\d\s&:]/g, '').match(/\S+/g);
-		if( words == null)
+		if( words == null){
+			$("#totalCount").empty().append("Pages: [0]");
 			return false;
+		}	
 		total_count_words = words.length;
 	}
 	
@@ -62,19 +64,17 @@ function estimationCount() {
 				</ul>
 				
             <div id="myTabContent" class="tab-content">
-                <div class="tab-pane fade in active" id="enter-total-number-of-words">
-             
-			        
+			
+            <div class="tab-pane fade in active" id="enter-total-number-of-words">
+            
+			
 			<div class="form-group col-lg-4">
 			 <label for="words">Total words</label>
-			
-		  	
 		  	<input type="text" class="form-control" id="total_words" name="total_words" aria-describedby="basic-addon1" value="0" onkeyup="estimationCount();" onkeydown="if (event.keyCode === 13) { return false; }">
-			
 			</div>
 			
             </div>
-			    <div class="tab-pane fade" id="type-in-your-words">
+			<div class="tab-pane fade" id="type-in-your-words">
 			
 			<div class="row">
 			<div class="form-group col-lg-12">
@@ -84,6 +84,7 @@ function estimationCount() {
 			</div>
 			
 			</div>
+			
 			</div>
 			
 			<div class="row">
